@@ -34,3 +34,36 @@ ul { padding-left: 22px; }
 nav { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; gap: 20px; flex-wrap: wrap; }
 nav a { color: var(--muted); text-decoration: none; }
 nav a:hover { color: var(--text); }
+
+/* Hero with the glowing orb */
+.hero { text-align: center; padding: 8px 0 24px; }
+.orb {
+  width: 120px; height: 120px; margin: 0 auto 24px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6e3ff 0%, #d65fd0 40%, #6b4cf6 80%);
+  box-shadow: 0 0 60px #b45cf0aa, 0 0 140px #6b4cf655;
+  animation: pulse 0.6s ease-in-out infinite alternate;
+}
+@keyframes pulse { from { transform: scale(0.96); } to { transform: scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+.button {
+  display: inline-block; margin-top: 12px; padding: 14px 28px; border-radius: 999px;
+  background: linear-gradient(135deg, #8f6bff, #d65fd0); color: white; font-weight: 600;
+  text-decoration: none; box-shadow: 0 8px 30px #b45cf055;
+}
+.button:hover { filter: brightness(1.1); }
+.hint { font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+/* Fold-out questions */
+details {
+  border: 1px solid var(--line); border-radius: 18px; margin: 12px 0;
+  background: #ffffff08; transition: background 0.2s;
+}
+details[open] { background: #ffffff10; }
+summary {
+  cursor: pointer; list-style: none; padding: 18px 22px; font-weight: 600;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent); font-size: 24px; font-weight: 400; transition: transform 0.2s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin: 0; padding: 0 22px 18px; color: var(--muted); }
